@@ -27,30 +27,31 @@ public class Main {
         V1.addAll(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
         E1.addAll(Arrays.asList(1, 2, 6, 2, 5, 10, 4, 2, 4, 5, 3, 7, 3, 9, 5, 8, 6, 7, 1, 6, 4, 10, 2, 8));
         Graph g1 = new Graph(degree, V1, E1);
-        colorGraph(g1);
+        System.out.println("Iterations for example 1:  " + colorGraph(g1));
 
         // Example 2
         V2.addAll(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
         E2.addAll(Arrays.asList(1, 5, 3, 10, 5, 9, 6, 10, 7, 2, 8, 7, 3, 4, 4, 8, 8, 10, 9, 2, 6, 5));
         Graph g2 = new Graph(degree, V2, E2);
-        colorGraph(g2);
+        System.out.println("Iterations for example 2:  " + colorGraph(g2));
 
         // Example 3
         V3.addAll(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
         E3.addAll(Arrays.asList(1, 2, 1, 7, 1, 3, 2, 7, 2, 8, 3, 8, 3, 9, 3, 10, 4, 9, 4, 10, 5, 1, 5, 8, 6, 10, 6, 9, 3, 2));
         Graph g3 = new Graph(degree, V3, E3);
-        colorGraph(g3);
+        System.out.println("Iterations for example 3:  " + colorGraph(g3));
 
         // Example for Tutor
 
         VForTutor.addAll(Arrays.asList());
         EForTutor.addAll(Arrays.asList());
         Graph gForTutor = new Graph(degree, VForTutor, EForTutor);
-        colorGraph(gForTutor);
+        System.out.println("Iterations for Tutor example:  " + colorGraph(gForTutor));
     }
 
-    public static void colorGraph(Graph g) {
+    public static int colorGraph(Graph g) {
         boolean stop = false;
+        int iterations = 0;
         while(!stop) {
             for (int i : g.V.keySet()) {
                 GraphNode curNode = g.V.get(i);
@@ -65,6 +66,8 @@ public class Main {
                     break;
                 }
             }
+            iterations += 1;
         }
+        return iterations;
     }
 }
